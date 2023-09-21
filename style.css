@@ -65,20 +65,15 @@
 
 }
 
-.input_wrap {
-
-    position: relative;
-
-}
-
 label {
 
     position: absolute;
+    display: inline-block;
     text-align: right;
     font-size: 3vmin;
-    left: 9vmin;
-    margin-top: 1vmin;
-    width: 20vmin;
+    margin-top: 1.5vh;
+    left: -20.5vw;
+    width: 100%;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: #171D1C;
 
@@ -92,7 +87,7 @@ input[type = text] {
     box-sizing: border-box;
     border-radius: 1vmin;
 
-    width: 50%;
+    width: 100%;
 
     background-color: #EFE9F4;
 
@@ -105,10 +100,8 @@ input[type = text] {
 
 form {
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     position: relative;
     margin: 0 auto;
+    max-width: 20vw;
 
 }
