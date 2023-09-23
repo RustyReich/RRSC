@@ -17,6 +17,7 @@ function AddItemInputField(id) {
     const newItemInput = CreateItemInputField(newItemID);
     newItemInput.addEventListener('input', () => { ItemFieldUpdateHandler(newItemInput) });
     newItemInput.addEventListener('keypress', function (e) { ItemFieldEnterHandler(newItemInput, e) });
+    newItemInput.addEventListener('keypress', OweUpdateHandler);
 
 }
 
@@ -44,6 +45,7 @@ function CreateItemInputField(id) {
     itemInput.setAttribute("type", "text");
     itemInput.setAttribute("name", "item" + id);
     itemInput.setAttribute("placeholder", "$0.00");
+    itemInput.setAttribute("class", "itemInput");
 
     const itemDiv = document.createElement("div");
     itemDiv.setAttribute("class", "input-wrap");

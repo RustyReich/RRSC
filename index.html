@@ -22,7 +22,7 @@
                 <div class = "input-wrap">
 
                     <label for = "item1" id = "label_item1">Item 1: </label>
-                    <input type = "text" id = "input_item1" name = "item1" placeholder = "$0.00"></input>
+                    <input type = "text" id = "input_item1" name = "item1" placeholder = "$0.00" class = "itemInput"></input>
 
                 </div>
 
@@ -60,11 +60,27 @@
 
         </div>
 
+        <div id = "owe_div">
+
+            <form class = "owe_form" id = "owe_form">
+
+                <div class = "input-wrap">
+
+                    <label for = "owe" id = "label_owe">You Owe: </label>
+                    <input type = "text" id = "input_owe" name = "owe" placeholder = "$0.00"></input>
+
+                </div>
+
+            </form>
+
+        </div>
+
     </body>
 
     <script type="text/javascript" src="js/input.js"></script>
     <script type="text/javascript" src="js/total.js"></script>
     <script type="text/javascript" src="js/item.js"></script>
+    <script type="text/javascript" src="js/calculate.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
 
 </html>

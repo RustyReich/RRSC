@@ -65,13 +65,35 @@
 
 }
 
+#owe_div {
+
+    background-color: #F5DD90;
+
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2vmin;
+
+    width: 80%;
+
+    border-radius: 1vmin;
+
+    overflow: hidden;
+
+    text-align: center;
+
+}
+
 label {
 
     position: absolute;
     display: inline-block;
     text-align: right;
     font-size: 3vmin;
-    margin-top: 1.5vh;
+    margin-top: 1.6vh;
     left: -20.5vw;
     width: 100%;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;

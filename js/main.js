@@ -11,11 +11,17 @@ function main() {
             inputs[i].addEventListener('input', function() { ItemFieldUpdateHandler(this); } );
             inputs[i].addEventListener('keypress', function(e) { ItemFieldEnterHandler(this, e); } );
 
-        } else {
+        } else if (!inputs[i].getAttribute("id").includes("owe")) {
 
             inputs[i].addEventListener('keypress', function(e) { TotalFieldEnterHandler(this, e); } );
 
+        } else {
+
+            inputs[i].addEventListener('input', function() { this.value = this.value.slice(0, -1); } );
+
         }
+
+        inputs[i].addEventListener('input', OweUpdateHandler);
 
     }
 
