@@ -92,9 +92,9 @@ label {
     position: absolute;
     display: inline-block;
     text-align: right;
-    font-size: 3vmin;
+    font-size: 3.5vmin;
     margin-top: 1.6vh;
-    left: -20.5vw;
+    left: -25.5vw;
     width: 100%;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: #171D1C;
@@ -114,7 +114,7 @@ input[type = text] {
     background-color: #EFE9F4;
 
     text-align: center;
-    font-size: 3vmin;
+    font-size: 3.5vmin;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: #171D1C;
 
@@ -124,6 +124,6 @@ form {
 
     position: relative;
     margin: 0 auto;
-    max-width: 20vw;
+    max-width: 25vw;
 
 }
