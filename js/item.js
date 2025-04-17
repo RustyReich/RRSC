@@ -5,8 +5,6 @@ function ItemFieldUpdateHandler(element) {
 
     if (inputValue.length == 1 && !(document.getElementById("input_item" + (id + 1))))
         AddItemInputField(id);
-    else if (inputValue.length == 0)
-        RemoveItemInputField(id + 1);
 
 }
 
@@ -66,8 +64,6 @@ function ItemFieldEnterHandler(element, event) {
 
         const inputValue = element.value;
         const id = parseInt(element.getAttribute("id").slice("input_item".length));
-
-        ItemFocusOutHandler(element);
 
         if (inputValue.length != 0)
             document.getElementById("input_item" + (id + 1)).focus();
