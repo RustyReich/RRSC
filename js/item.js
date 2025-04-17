@@ -18,6 +18,7 @@ function AddItemInputField(id) {
     newItemInput.addEventListener('input', () => { ItemFieldUpdateHandler(newItemInput) });
     newItemInput.addEventListener('keypress', function (e) { ItemFieldEnterHandler(newItemInput, e) });
     newItemInput.addEventListener('keypress', OweUpdateHandler);
+    newItemInput.addEventListener('focusout', function() { ItemFocusOutHandler(this); } );
 
 }
 
@@ -66,16 +67,23 @@ function ItemFieldEnterHandler(element, event) {
         const inputValue = element.value;
         const id = parseInt(element.getAttribute("id").slice("input_item".length));
 
+        ItemFocusOutHandler(element);
+
         if (inputValue.length != 0)
             document.getElementById("input_item" + (id + 1)).focus();
-        else if (inputValue.length == 0 && (id != 1)) {
-
-            RemoveItemInputField(id);
-
+        else if (inputValue.length == 0 && (id != 1))
             document.getElementById("input_preTax").focus();
-            
-        }
 
     }
+
+}
+
+function ItemFocusOutHandler(element) {
+
+    const inputValue = element.value;
+    const id = parseInt(element.getAttribute("id").slice("input_item".length));
+
+    if (inputValue.length == 0 && (id != 1))
+        RemoveItemInputField(id); 
 
 }

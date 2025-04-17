@@ -10,6 +10,7 @@ function main() {
 
             inputs[i].addEventListener('input', function() { ItemFieldUpdateHandler(this); } );
             inputs[i].addEventListener('keypress', function(e) { ItemFieldEnterHandler(this, e); } );
+            inputs[i].addEventListener('focusout', function() { ItemFocusOutHandler(this); } );
 
         } else if (!inputs[i].getAttribute("id").includes("owe")) {
 
