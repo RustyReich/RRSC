@@ -37,6 +37,7 @@ function CreateItemInputField(id) {
     const itemLabel = document.createElement("label");
     itemLabel.setAttribute("for", "item" + id);
     itemLabel.setAttribute("id", "label_item" + id);
+    itemLabel.setAttribute("class", "itemLabel");
     itemLabel.textContent = "Item " + id + ": ";
     
     const itemInput = document.createElement("input");
@@ -74,12 +75,41 @@ function ItemFieldEnterHandler(element, event) {
 
 }
 
+// Function for when an item input loses focus
 function ItemFocusOutHandler(element) {
 
+    // Get the value and id of the item input that just lost focus
     const inputValue = element.value;
     const id = parseInt(element.getAttribute("id").slice("input_item".length));
 
-    if (inputValue.length == 0 && (id != 1))
-        RemoveItemInputField(id); 
+    // If the current input for the item that lost focus is empty
+    if (inputValue.length == 0)
+    {
+
+        // Get the number of items
+        const numOfItems = document.getElementsByClassName("itemInput").length;
+        
+        // If there is more than one item, remove the current item
+        if (numOfItems != 1)
+            RemoveItemInputField(id);
+
+        // Get all labels and inputs for all remaining items
+        const labels = document.getElementsByClassName("itemLabel");
+        const inputs = document.getElementsByClassName("itemInput");
+
+        // Go through all remaining labels and inputs and give them new id's in numerical order
+        for (var i = 0; i < items.length; i++)
+        {
+
+            labels[i].setAttribute("for", "item" + (i + 1));
+            labels[i].setAttribute("id", "label_item" + (i + 1));
+            labels[i].textContent = "Item " + (i + 1) + ": ";
+
+            inputs[i].setAttribute("id", "input_item" + (i + 1));
+            inputs[i].setAttribute("name", "item" + (i + 1));
+
+        }
+
+    }
 
 }
