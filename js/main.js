@@ -19,9 +19,10 @@ function main() {
 
         } else if (!inputs[i].getAttribute("id").includes("owe")) {
 
-            // All total/tip inputs have a TotalFieldEnterHandler and TipUpdateHandler
+            // All total/tip inputs have a TotalFieldEnterHandler and TipUpdateHandler and a TotalFocusHandler
             inputs[i].addEventListener('keypress', function(e) { TotalFieldEnterHandler(this, e); } );
             inputs[i].addEventListener('input', function() { TipUpdateHandler(this); } );
+            inputs[i].addEventListener('focus', function() { TotalFocusHandler(this); } );
 
         } else {
 

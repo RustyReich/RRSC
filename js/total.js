@@ -1,15 +1,19 @@
+// Function for when the ENTER key is pressed on a total/tip input field
 function TotalFieldEnterHandler(element, event) {
 
     if (event.key === 'Enter') {
 
         const id = element.getAttribute("id");
 
+        // Logic for deciding the next input field to move to when you press ENTER
         if (id == "input_preTax")
             document.getElementById("input_postTax").focus();
         else if (id == "input_postTax")
             document.getElementById("input_tip").focus();
         else if (id == "input_tip")
             document.getElementById("input_tip_percentage").focus();
+        else if (id == "input_tip_percentage")
+            document.getElementById("input_owe").focus();
 
     }
 
@@ -60,5 +64,19 @@ function TipUpdateHandler(element)
         }
 
     }
+
+}
+
+// Function for when a total/tip input element gains focus
+function TotalFocusHandler(element)
+{
+    
+    // Get list of all item inputs
+    const inputs = document.getElementsByClassName("itemInput");
+
+    // Delete any item inputs that are empty
+    for (var i = 0; i < inputs.length; i++)
+        if (inputs[i].value.length == 0)
+            RemoveItemInputField(i + 1);
 
 }
