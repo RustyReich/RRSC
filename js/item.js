@@ -20,11 +20,14 @@ function AddItemInputField(id) {
 
 }
 
+// Function for removing an item
 function RemoveItemInputField(id) {
 
+    // Get the input and label for the gien item id
     const inputToDelete = document.getElementById("input_item" + id);
     const labelToDelete = document.getElementById("label_item" + id);
     
+    // Remove the input and label
     inputToDelete.remove();
     labelToDelete.remove();
 
@@ -98,7 +101,7 @@ function ItemFocusOutHandler(element) {
         const inputs = document.getElementsByClassName("itemInput");
 
         // Go through all remaining labels and inputs and give them new id's in numerical order
-        for (var i = 0; i < items.length; i++)
+        for (var i = 0; i < inputs.length; i++)
         {
 
             labels[i].setAttribute("for", "item" + (i + 1));
