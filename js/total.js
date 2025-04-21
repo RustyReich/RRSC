@@ -23,9 +23,13 @@ function TotalFieldEnterHandler(element, event) {
 function TipUpdateHandler(element)
 {
 
+    // Get the elements for the tip value and tip percentage value
+    const tipValueElement = document.getElementById("input_tip");
+    const tipValuePercentageElement = document.getElementById("input_tip_percentage");
+
     // Get the current values for tip, tip percentage, and total post-tax
-    const tipValue = Number(document.getElementById("input_tip").value);
-    const tipPercentageValue = Number(document.getElementById("input_tip_percentage").value);
+    const tipValue = Number(tipValueElement.value);
+    const tipPercentageValue = Number(tipValuePercentageElement.value);
     const totalPostTaxValue = Number(document.getElementById("input_postTax").value);
 
     // Get the id of the current element
@@ -36,20 +40,28 @@ function TipUpdateHandler(element)
     {
 
         // If the tip is empty, make the tip percentage empty. Otherwise, calculate the tip percentage
-        if (document.getElementById("input_tip").value.length == 0)
-            document.getElementById("input_tip_percentage").value = "";
+        if (tipValueElement.value.length == 0)
+            tipValuePercentageElement.value = "";
         else
-            document.getElementById("input_tip_percentage").value = tipValue / totalPostTaxValue * 100;
+            tipValuePercentageElement.value = tipValue / totalPostTaxValue * 100;
+
+        // If the tip percentage value is not an integer, round it to 2 decimal places
+        if (Number.isInteger(Number(tipValuePercentageElement.value)) == false)
+            tipValuePercentageElement.value = Number(tipValuePercentageElement.value).toFixed(2);
 
     }
     else if (id == "input_tip_percentage")  // If the element being updated is the tip percentage, we need to update the tip
     {
 
         // If the tip percentage is empty, make the tip empty. Otherwise, calculate the tip
-        if (document.getElementById("input_tip_percentage").value.length == 0)
-            document.getElementById("input_tip").value = "";
+        if (tipValuePercentageElement.value.length == 0)
+            tipValueElement.value = "";
         else
-            document.getElementById("input_tip").value = totalPostTaxValue * tipPercentageValue / 100;
+            tipValueElement.value = totalPostTaxValue * tipPercentageValue / 100;
+
+        // If the tip value is not an integer, round it to 2 decimal places
+        if (Number.isInteger(Number(tipValueElement.value)) == false)
+            tipValueElement.value = Number(tipValueElement.value).toFixed(2);
 
     }
     else    // If we are updating a total value (pre-tax or post-tax), make both the tip and tip percentage empty
@@ -58,8 +70,8 @@ function TipUpdateHandler(element)
         if (document.getElementById("input_preTax").value.length != 0 && document.getElementById("input_postTax").value.length != 0)
         {
 
-            document.getElementById("input_tip_percentage").value = "";
-            document.getElementById("input_tip").value = "";
+            tipValuePercentageElement.value = "";
+            tipValueElement.value = "";
 
         }
 
