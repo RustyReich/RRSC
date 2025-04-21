@@ -37,6 +37,10 @@ function OweUpdateHandler() {
     const oweInputElement = document.getElementById("input_owe");
     oweInputElement.value = itemTotals + percentageOfTotal * (totalTax + parseFloat(tipInput.value));
 
+    // If the calculated amount owed is NaN, set it to an empty string
+    if (Number.isNaN(Number(oweInputElement.value)))
+        oweInputElement.value = "";
+
     // If the owed value is not an integer, round it to 2 decimal places
     if (Number.isInteger(Number(oweInputElement.value)) == false)
         oweInputElement.value = Number(oweInputElement.value).toFixed(2);

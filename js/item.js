@@ -1,17 +1,23 @@
+// Function for handling updates to item input fields
 function ItemFieldUpdateHandler(element) {
     
+    // Get the value that is currently inputted into the item
     const inputValue = element.value;
     const id = parseInt(element.getAttribute("id").slice("input_item".length));
 
+    // If the user has added a value for the last item, add a new item
     if (inputValue.length == 1 && !(document.getElementById("input_item" + (id + 1))))
         AddItemInputField(id);
 
 }
 
+// Function for adding an item input field
 function AddItemInputField(id) {
 
+    // Create new id for the item
     const newItemID = id + 1;
 
+    // Create the item input field
     const newItemInput = CreateItemInputField(newItemID);
     newItemInput.addEventListener('input', () => { ItemFieldUpdateHandler(newItemInput) });
     newItemInput.addEventListener('keypress', function (e) { ItemFieldEnterHandler(newItemInput, e) });
@@ -84,6 +90,26 @@ function ItemFocusOutHandler(element) {
     // Get the value and id of the item input that just lost focus
     const inputValue = element.value;
     const id = parseInt(element.getAttribute("id").slice("input_item".length));
+
+    // If the first character is an equal sign, evaluate the expression after the equal sign
+    if (inputValue[0] == '=')
+    {
+
+        try
+        {
+            
+            element.value = Number(eval(inputValue.slice(1))).toFixed(2);
+
+        }
+        catch
+        {
+
+            // If the expression cannot be evaluated, make the text red
+            element.style.color = '#ff0000'
+
+        }
+
+    }
 
     // If the current input for the item that lost focus is empty
     if (inputValue.length == 0)
